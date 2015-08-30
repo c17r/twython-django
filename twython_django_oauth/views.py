@@ -17,7 +17,7 @@ from twython_django_oauth.models import TwitterProfile
 
 def logout(request, redirect_url=settings.LOGOUT_REDIRECT_URL):
     """
-        Nothing hilariously hidden here, logs a user out. Strip this out if your
+    Nothing hilariously hidden here, logs a user out. Strip this out if your
         application already has hooks to handle this.
     """
     django_logout(request)
@@ -25,7 +25,8 @@ def logout(request, redirect_url=settings.LOGOUT_REDIRECT_URL):
 
 
 def begin_auth(request):
-    """The view function that initiates the entire handshake.
+    """
+    The view function that initiates the entire handshake.
 
     For the most part, this is 100% drag and drop.
     """
@@ -45,11 +46,12 @@ def begin_auth(request):
 
 
 def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
-    """A user gets redirected here after hitting Twitter and authorizing your app to use their data.
+    """
+    A user gets redirected here after hitting Twitter and authorizing your
+        app to use their data.
 
-    This is the view that stores the tokens you want
-    for querying data. Pay attention to this.
-
+    This is the view that stores the tokens you want for querying data. Pay
+        attention to this.
     """
     # Now that we've got the magic tokens back from Twitter, we need to exchange
     # for permanent ones and store them...
@@ -84,7 +86,10 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
 
 
 def user_timeline(request):
-    """An example view with Twython/OAuth hooks/calls to fetch data about the user in question."""
+    """
+    An example view with Twython/OAuth hooks/calls to fetch data about the
+        user in question.
+    """
     user = request.user.twitterprofile
     twitter = Twython(settings.TWITTER_KEY, settings.TWITTER_SECRET,
                       user.oauth_token, user.oauth_secret)
