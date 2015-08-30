@@ -65,8 +65,8 @@ def thanks(request, redirect_url=settings.LOGIN_REDIRECT_URL):
     try:
         user = User.objects.get(username=authorized_tokens['screen_name'])
     except User.DoesNotExist:
-        # We mock a creation here; no email, password is just the token, etc.
-        user = User.objects.create_user(authorized_tokens['screen_name'], "fjdsfn@jfndjfn.com", authorized_tokens['oauth_token_secret'])
+        # We mock a creation here; no email or password
+        user = User.objects.create_user(authorized_tokens['screen_name'])
         profile = TwitterProfile()
         profile.user = user
         profile.oauth_token = authorized_tokens['oauth_token']
